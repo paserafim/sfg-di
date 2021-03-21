@@ -3,7 +3,7 @@ package paserafim.framework.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import paserafim.framework.sfgdi.controllers.ConstrutorController;
+import paserafim.framework.sfgdi.controllers.ConstrutorInjectedController;
 import paserafim.framework.sfgdi.controllers.MyController;
 import paserafim.framework.sfgdi.controllers.PropertyInjectedController;
 import paserafim.framework.sfgdi.controllers.SetterInjectedController;
@@ -16,9 +16,10 @@ public class SfgDiApplication {
 		// by default the controller name comes in lowercase
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayHelloWorld();
-
-		System.out.println(greeting);
+		System.out.println("-------- Primary bean");
+		System.out.println(	myController.sayHelloWorld());
+//		String greeting = myController.sayHelloWorld();
+//		System.out.println(greeting);
 
 		System.out.println("------------ PropertyInjectedController");
 		// by default the controller name comes in lowercase
@@ -32,8 +33,8 @@ public class SfgDiApplication {
 
 		System.out.println("------------ ConstrutorInjectedController");
 		// by default the controller name comes in lowercase
-		ConstrutorController construtorController = (ConstrutorController) ctx.getBean("construtorController");
-		System.out.println(construtorController.getGreeting());
+		ConstrutorInjectedController construtorInjectedController = (ConstrutorInjectedController) ctx.getBean("construtorInjectedController");
+		System.out.println(construtorInjectedController.getGreeting());
 	}
 
 }

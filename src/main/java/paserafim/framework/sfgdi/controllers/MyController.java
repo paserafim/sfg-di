@@ -1,13 +1,19 @@
 package paserafim.framework.sfgdi.controllers;
 
 import org.springframework.stereotype.Controller;
+import paserafim.framework.sfgdi.Services.GreetingService;
 
 @Controller
 public class MyController {
 
-    public String sayHelloWorld() {
-        System.out.println("Hello World!");
+    private final GreetingService greetingService;
 
-        return "Hi folks!";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHelloWorld() {
+
+        return greetingService.sayGreeting();
     }
 }
