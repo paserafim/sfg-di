@@ -3,16 +3,18 @@ package paserafim.framework.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import paserafim.framework.sfgdi.controllers.ConstrutorInjectedController;
-import paserafim.framework.sfgdi.controllers.MyController;
-import paserafim.framework.sfgdi.controllers.PropertyInjectedController;
-import paserafim.framework.sfgdi.controllers.SetterInjectedController;
+import paserafim.framework.sfgdi.controllers.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SfgDiApplication.class, args);
+
+		System.out.println("-------------- International ---------------------");
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayGreeting());
+
 		// by default the controller name comes in lowercase
 		MyController myController = (MyController) ctx.getBean("myController");
 
